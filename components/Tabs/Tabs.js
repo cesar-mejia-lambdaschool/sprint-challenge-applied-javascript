@@ -42,6 +42,11 @@ class TabCard {
   selectCard () {
     // Update the style of this.element to display = null
     this.element.style.display = null
+    // TweenMax.from(this.element, 1, { y: 30, autoAlpha: 0 })
+    TweenLite.from(this.element, 1, {
+      autoAlpha: 0,
+      y: 200
+    })
   }
 }
 
@@ -49,5 +54,9 @@ class TabCard {
 let tabs = document.querySelectorAll('.tab')
 // Map over the array and convert each tab reference into a new TabLink object.  Pass in the tab object to the Tabs class.
 tabs.forEach(tab => new TabLink(tab))
-
+TweenLite.from(tabs, 2, {
+  autoAlpha: 0,
+  // x: 250,
+  ease: Power1.easeInOut
+})
 // Once you are complete, call the .select method on the first tab

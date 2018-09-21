@@ -2,18 +2,16 @@ class Carousel {}
 
 let carousel = document.querySelector('.carousel')
 const left = carousel.firstElementChild
-console.log('left', left)
 const right = carousel.lastElementChild
-console.log('right', right)
 const imgs = carousel.querySelectorAll('img')
-console.log('imgs', imgs)
 let index = 0
-
+imgs[index].style.display = 'block'
 left.addEventListener('click', () => {
   --index
   if (index < 0) index = 3
   imgs.forEach(img => (img.style.display = 'none'))
   imgs[index].style.display = 'block'
+  TweenLite.fromTo(imgs[index], 1, { opacity: 0, ease: Power0.easeInOut })
 })
 
 right.addEventListener('click', () => {
@@ -21,6 +19,7 @@ right.addEventListener('click', () => {
   if (index > 3) index = 0
   imgs.forEach(img => (img.style.display = 'none'))
   imgs[index].style.display = 'block'
+  TweenLite.from(imgs[index], 1, { opacity: 0, ease: Power0.easeInOut })
 })
 
 console.log('index', index)
